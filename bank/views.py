@@ -8,8 +8,12 @@ from bank.models import MyBankBranch
 import urllib.parse
 import collections
 import itertools
+from django.shortcuts import redirect
 
 # Create your views here.
+
+def redirect_root(request):
+    return redirect('/fetchifsc/')
 
 def parse_ifsc_path(querypath):
     #  http://127.0.0.1:8000/fetchifsc/ifsc=ABHY0065002&limit=1&offset=1/
@@ -25,7 +29,9 @@ class FetchIfscView(APIView):
 
     def get(self,request,querypath):
         print("query:: ",querypath)
-
+        if(querypath==''):
+            return Response([{"Message":"bank ifsc code is required"}])
+            
         query_dict = parse_ifsc_path(querypath)
         result=[]
         limit=1
@@ -95,3 +101,14 @@ class FetchBankView(APIView):
         if not result:
             result=[{"Message":"NO DETAILS FOUND"}]
         return Response(result)
+
+class FetchBank(APIView):
+    permission_classes = (IsAuthenticated,)
+    def get(self,request):
+        return Response([{"Message":"bankname and cityname are required"}])
+
+
+class FetchIfsc(APIView):
+    permission_classes = (IsAuthenticated,)
+    def get(self,request):
+        return Response([{"Message":"bank ifsc code is required"}])

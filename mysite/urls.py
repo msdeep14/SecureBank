@@ -22,7 +22,9 @@ from bank import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    
+    url(r'^$', views.redirect_root),
+    path('fetchbank/',views.FetchBank.as_view(),name='fetchbank'),
+    path('fetchifsc/',views.FetchIfsc.as_view(),name='fetchifsc'),
     path('fetchifsc/<path:querypath>/',views.FetchIfscView.as_view(),name='fetchifsc'),
     path('fetchbank/<path:querypath>/',views.FetchBankView.as_view(),name='fetchbank'),
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
