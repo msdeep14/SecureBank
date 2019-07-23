@@ -156,6 +156,7 @@ SIMPLE_JWT = {
 }
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
 STATICFILES_DIRS = (
