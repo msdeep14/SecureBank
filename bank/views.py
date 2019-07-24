@@ -13,7 +13,7 @@ from django.shortcuts import redirect
 # Create your views here.
 
 def redirect_root(request):
-    return redirect('/fetchifsc/')
+    return render(request, 'bank/welcome.html',{'result': []})
 
 def parse_ifsc_path(querypath):
     #  http://127.0.0.1:8000/fetchifsc/ifsc=ABHY0065002&limit=1&offset=1/
@@ -31,7 +31,7 @@ class FetchIfscView(APIView):
         print("query:: ",querypath)
         if(querypath==''):
             return Response([{"Message":"bank ifsc code is required"}])
-            
+
         query_dict = parse_ifsc_path(querypath)
         result=[]
         limit=1
