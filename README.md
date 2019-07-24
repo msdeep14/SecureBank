@@ -3,8 +3,6 @@ Django app to fetch bank details
 
 Hosted on https://deepsecurebank.herokuapp.com/
 
-**NOTE:** You will get `Server Error (500)` while trying to access the URL, as it requires authentication token.
-
 ## Application Details:
 
 **Dataset:** https://github.com/snarayanank2/indian_banks 
