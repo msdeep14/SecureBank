@@ -7,7 +7,7 @@ Hosted on https://deepsecurebank.herokuapp.com/
 
 **Dataset:** https://github.com/snarayanank2/indian_banks 
 
-Use `curl` to fetch bank details from server. Refer examples below:
+Use `curl` to fetch bank details from server. You can specify `limit` and `offset` parameters skip and limit the number of results fetched from server. Refer examples below:
 
 ```
 > out=$(curl -X POST -H "Content-Type: application/json" -d '{"username": "mandeep", "password": "mandeep"}' https://deepsecurebank.herokuapp.com/api/token/)
