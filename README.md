@@ -1,5 +1,5 @@
 # SecureBank
-Django app to fetch bank details
+API service to request bank details specific to query URL
 
 Hosted on https://deepsecurebank.herokuapp.com/
 
@@ -49,3 +49,30 @@ For /fetchifsc/, it can return maximum of 1 entry as IFSC code is unique for eac
 ```
 
 **NOTE**: You will need `jq` to installed on command line, else you can copy access token from `echo $out`
+
+## Development
+Make sure you have python virtualenv installed
+
+`source vbank/bin/activate`
+
+If compiling on local host
+1. Make sure to set `SECRET_KEY` as environment variable
+2. Add entry `'127.0.0.1'` to `ALLOWED_HOSTS`
+3. Set local postgresql database `bankdb` and load data from https://github.com/snarayanank2/indian_banks
+```
+> pg_ctl -D /usr/local/var/postgres start
+
+> createdb -h localhost -p 5432  bankdb 
+
+> psql -h localhost bankdb < indian_banks.sql
+
+> psql -h localhost bankdb
+```
+
+## RESOURCES
+1. You can follow doc for deploying django app to Heroku: https://www.codementor.io/jamesezechukwu/how-to-deploy-django-app-on-heroku-dtsee04d4
+2. Fix whitenoise issue while following doc in Point 1, https://stackoverflow.com/questions/55813584/django-whitenoise-configuration-is-incompatible-with-whitenoise-v4-0
+3. To set secret key as environment variable on Heroku server
+`heroku config:set SECRET_KEY='<YOUR_SECRET_KEY>'`
+4. To push local psql db to Heroku
+`heroku pg:push bankdb <heroku-db>`
