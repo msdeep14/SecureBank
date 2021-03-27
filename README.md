@@ -1,5 +1,8 @@
 # SecureBank
-API service to request bank details specific to query URL
+API service to request bank details specific to query URL. 
+Example:
+1. Get all bank details for given IFSC code.
+2. Get all banks in a city.
 
 Hosted on https://deepsecurebank.herokuapp.com/
 
